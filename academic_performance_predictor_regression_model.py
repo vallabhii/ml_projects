@@ -24,12 +24,12 @@ def compute_gradient(x,y,w,b):
     dj_db=dj_db/m     
     return dj_dw,dj_db
 
-def gradient_descent(x,y,w_in,b_in,cost_function,gradient_function,alpha,num_iterations):
+def gradient_descent(x,y,cost_function,gradient_function,alpha,num_iterations):
     m=x.shape[0]
+    w_in=np.zeros(x.shape[1])
+    b_in=0
     J_history=[]
     w_history=[]
-    w=copy.deepcopy(w_in)
-    b=b_in
     for i in range(num_iterations):
         dj_dw, dj_db = gradient_function(x,y,w,b)
         w=w-alpha*dj_dw               
@@ -42,3 +42,4 @@ def gradient_descent(x,y,w_in,b_in,cost_function,gradient_function,alpha,num_ite
             w_history.append(w.copy())
             print(f"Iteration {i:4}: Cost {float(J_history[-1]):8.2f}")     
     return w,b,J_history,w_history
+
