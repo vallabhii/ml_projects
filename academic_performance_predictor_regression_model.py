@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import copy
 import math
+import pandas as pd
+df = pd.read_csv("student_habits_performance.csv")
 
 def compute_cost_fxn(x,y,w,b):
     m=x.shape[0]
